@@ -1,8 +1,6 @@
 $(document).ready(onReady);
 
-let employeeData = [
-    {firstName:'Jim', lastName:'Jeff', id:1468, title:'fry cook', salary:90000}
-];
+let employees = [];
 
 
 
@@ -24,9 +22,11 @@ function submitForm() {
     // if (firstName === '' || lastName === '' || id === '' || title === '' || salary === '') {
     //     alert('Fill empty fields!');
     // } else {
-        
+        employees.push({firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)});
         //Empty the input values.
         clearForm();
+        //Add employee object to the DOM
+        addEmployee();
     }
 //}
 
@@ -36,4 +36,12 @@ function clearForm() {
     $('#id-input').val('');
     $('#title-input').val('');
     $('#salary-input').val('');
+}
+
+function addEmployee() {
+    console.log(employees);
+    $('tbody').empty();
+    for (let i = 0; i < employees.length; i++) {
+        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td></tr>`);
+    }
 }
