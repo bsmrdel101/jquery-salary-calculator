@@ -1,12 +1,10 @@
 $(document).ready(onReady);
 
 let employees = [];
-let buttonId;
 
 
 function onReady() {
     $('#form-submit').on('click', submitForm);
-    $('tbody').last().on('click', deleteEmployee)
 }
 
 //Store each form input then empty the form. 
@@ -30,6 +28,7 @@ function submitForm() {
         addEmployee();
         //Update total monthly spending.
         handleTotalMonthly();
+        $('tr').on('click', deleteEmployee);
     }
 }
 
@@ -42,11 +41,9 @@ function clearForm() {
 }
 
 function addEmployee() {
-    buttonId = 0;
     $('tbody').empty();
     for (let i = 0; i < employees.length; i++) {
-        buttonId += 1;
-        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td><td><button class="delete-button" id="delete-button-${buttonId}">Delete</button></td></tr>`);
+        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td><td><button class="delete-button">Delete</button></td></tr>`);
     }
 }
 
@@ -68,6 +65,8 @@ function handleTotalMonthly() {
 //Select the tr that delete button is in, and remove it.
 //Get the salary value in deleted object, and subtract that value from total monthly.
 function deleteEmployee() {
-    let test = $(`#delete-button-${buttonId}`).attr('id');
-    console.log(test);    
+    let test = $(this);
+    console.log(test);
+
+    $(this).remove();
 }
