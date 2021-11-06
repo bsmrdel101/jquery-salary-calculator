@@ -65,6 +65,5 @@ function handleTotalMonthly() {
 }
 
 function deleteEmployee() {
-    console.log('hi');
-    
+    $('this').find('tr').remove();
 }
