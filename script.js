@@ -1,7 +1,7 @@
 $(document).ready(onReady);
 
 let employees = [];
-
+let buttonId;
 
 
 function onReady() {
@@ -42,10 +42,11 @@ function clearForm() {
 }
 
 function addEmployee() {
-    console.log(employees);
+    buttonId = 0;
     $('tbody').empty();
     for (let i = 0; i < employees.length; i++) {
-        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td><td><button class="delete-button">Delete</button></td></tr>`);
+        buttonId += 1;
+        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td><td><button class="delete-button" id="delete-button-${buttonId}">Delete</button></td></tr>`);
     }
 }
 
@@ -64,6 +65,9 @@ function handleTotalMonthly() {
     }
 }
 
+//Select the tr that delete button is in, and remove it.
+//Get the salary value in deleted object, and subtract that value from total monthly.
 function deleteEmployee() {
-    $('this').find('tr').remove();
+    let test = $(`#delete-button-${buttonId}`).attr('id');
+    console.log(test);    
 }
