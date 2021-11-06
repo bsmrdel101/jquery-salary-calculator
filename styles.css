@@ -1,3 +1,11 @@
 header {
     text-align: center;
 }
+
+.red-text {
+    color: rgb(175, 47, 47);
+}
+
+/* .delete-button {
+
+} */

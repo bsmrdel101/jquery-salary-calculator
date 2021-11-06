@@ -6,6 +6,7 @@ let employees = [];
 
 function onReady() {
     $('#form-submit').on('click', submitForm);
+    $('tbody').last().on('click', deleteEmployee)
 }
 
 //Store each form input then empty the form. 
@@ -44,7 +45,7 @@ function addEmployee() {
     console.log(employees);
     $('tbody').empty();
     for (let i = 0; i < employees.length; i++) {
-        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td></tr>`);
+        $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td><td><button class="delete-button">Delete</button></td></tr>`);
     }
 }
 
@@ -55,6 +56,15 @@ function handleTotalMonthly() {
     }
     totalMonthly /= 12;
     totalMonthly = Number(totalMonthly.toFixed(2));
-    console.log('Total monthly cost: ', totalMonthly);
     $('#total-monthly').text(totalMonthly);
+    if (totalMonthly >= 20000) {
+        $('#total-monthly').parent().addClass('red-text');
+    } else {
+        $('#total-monthly').parent().removeClass('red-text');
+    }
+}
+
+function deleteEmployee() {
+    console.log('hi');
+    
 }
