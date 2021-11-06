@@ -54,5 +54,7 @@ function handleTotalMonthly() {
         totalMonthly += employees[i].salary;
     }
     totalMonthly /= 12;
-    console.log(totalMonthly);
+    totalMonthly = Number(totalMonthly.toFixed(2));
+    console.log('Total monthly cost: ', totalMonthly);
+    $('#total-monthly').text(totalMonthly);
 }
