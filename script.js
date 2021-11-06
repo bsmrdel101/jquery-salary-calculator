@@ -4,7 +4,6 @@ let employees = [];
 
 
 
-
 function onReady() {
     $('#form-submit').on('click', submitForm);
 }
@@ -19,16 +18,19 @@ function submitForm() {
     //check if any fields are empty.
         //send alert if field is empty.
 
-    // if (firstName === '' || lastName === '' || id === '' || title === '' || salary === '') {
-    //     alert('Fill empty fields!');
-    // } else {
+    if (firstName === '' || lastName === '' || id === '' || title === '' || salary === '') {
+        alert('Fill empty fields!');
+    } else {
+        //Create new object with form data, and push it to employees array.
         employees.push({firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)});
         //Empty the input values.
         clearForm();
         //Add employee object to the DOM
         addEmployee();
+        //Update total monthly spending.
+        handleTotalMonthly();
     }
-//}
+}
 
 function clearForm() {
     $('#first-name-input').val('');
@@ -44,4 +46,13 @@ function addEmployee() {
     for (let i = 0; i < employees.length; i++) {
         $('tbody').append(`<tr><td>${employees[i].firstName}</td><td>${employees[i].lastName}</td><td>${employees[i].id}</td><td>${employees[i].title}</td><td>${employees[i].salary}</td></tr>`);
     }
+}
+
+function handleTotalMonthly() {
+    let totalMonthly = 0;
+    for (let i = 0; i < employees.length; i++) {
+        totalMonthly += employees[i].salary;
+    }
+    totalMonthly /= 12;
+    console.log(totalMonthly);
 }
