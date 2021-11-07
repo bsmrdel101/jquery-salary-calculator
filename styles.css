@@ -10,6 +10,7 @@ header {
     border: solid 3px #585656;
 }
 
+/* screen divider */
 #page-divide {
     margin: 40px 0 40px 0;
     border: solid 1px #58565633;
@@ -40,6 +41,8 @@ tr:nth-child(odd) {
     background-color: rgb(235 233 233);
 }
 
+
+
   /* Form stlyes */
 input[type=text], input[type=number] {
     padding:10px;
@@ -61,4 +64,19 @@ input[type=text], input[type=number] {
 .icon-styles {
     height: 15px;
     width: 15px;
+}
+
+.delete-button {
+    background-color: rgb(193 74 74);
+    border-radius: 10px;
+    color: white;
+}
+
+/* Hover events */
+#form-submit:hover {
+    background-color: #c1db9b;
+}
+
+.delete-button:hover {
+    background-color: rgb(175 54 54);
 }
