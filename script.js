@@ -1,6 +1,7 @@
 $(document).ready(onReady);
 
 let employees = [];
+let detectSalary;
 
 
 function onReady() {
@@ -14,6 +15,7 @@ function submitForm() {
     let id = $('#id-input').val();
     let title = $('#title-input').val();
     let salary = $('#salary-input').val();
+    detectSalary = $('#salary-input').val();
     //check if any fields are empty.
         //send alert if field is empty.
 
@@ -28,6 +30,7 @@ function submitForm() {
         addEmployee();
         //Update total monthly spending.
         handleTotalMonthly();
+        //Detect for delete button.
         $('tr').on('click', deleteEmployee);
     }
 }
@@ -56,17 +59,19 @@ function handleTotalMonthly() {
     totalMonthly = Number(totalMonthly.toFixed(2));
     $('#total-monthly').text(totalMonthly);
     if (totalMonthly >= 20000) {
-        $('#total-monthly').parent().addClass('red-text');
+        // $('#total-monthly').parent().addClass('red-text');
+        $('#total-monthly').parent().css('color', 'red');
     } else {
-        $('#total-monthly').parent().removeClass('red-text');
+        // $('#total-monthly').parent().removeClass('red-text');
+        $('#total-monthly').parent().css('color', 'black');
     }
 }
 
 //Select the tr that delete button is in, and remove it.
+    //Remove object from array that corresponds to the table row being deleted.
 //Get the salary value in deleted object, and subtract that value from total monthly.
 function deleteEmployee() {
-    let test = $(this);
-    console.log(test);
-
+    console.log(detectSalary);
+    employees
     $(this).remove();
 }
