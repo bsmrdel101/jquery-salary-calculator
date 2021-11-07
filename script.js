@@ -1,6 +1,8 @@
 $(document).ready(onReady);
 
 let employees = [];
+let employeeData;
+let totalMonthly = 0;
 
 
 function onReady() {
@@ -21,7 +23,7 @@ function submitForm() {
         alert('Fill empty fields!');
     } else {
         //Create new object with form data, and push it to employees array.
-        let employeeData = {firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)};
+        employeeData = {firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)};
         employees.push(employeeData);
         //Empty the input values.
         clearForm();
@@ -50,11 +52,26 @@ function addEmployee() {
 }
 
 function handleTotalMonthly() {
-    let totalMonthly = 0;
+    totalMonthly = 0;
     for (let i = 0; i < employees.length; i++) {
         totalMonthly += employees[i].salary;
     }
     totalMonthly /= 12;
+    totalMonthly = Number(totalMonthly.toFixed(2));
+    $('#total-monthly').text(totalMonthly);
+    if (totalMonthly >= 20000) {
+        // $('#total-monthly').parent().addClass('red-text');
+        $('#total-monthly').parent().css('color', 'red');
+    } else {
+        // $('#total-monthly').parent().removeClass('red-text');
+        $('#total-monthly').parent().css('color', 'black');
+    }
+}
+
+function subtractTotalMonthly(index) {
+    let dividedSalary = employees[index].salary / 12;
+    totalMonthly -= dividedSalary;
+    
     totalMonthly = Number(totalMonthly.toFixed(2));
     $('#total-monthly').text(totalMonthly);
     if (totalMonthly >= 20000) {
@@ -71,8 +88,8 @@ function handleTotalMonthly() {
 //Get the salary value in deleted object, and subtract that value from total monthly.
 function deleteEmployee() {
     let index = $(this).index();
+    subtractTotalMonthly(index);
     
-
     employees.splice(index, 1);
     $(this).remove();
 }
