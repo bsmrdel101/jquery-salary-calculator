@@ -1,7 +1,6 @@
 $(document).ready(onReady);
 
 let employees = [];
-let detectSalary;
 
 
 function onReady() {
@@ -15,7 +14,6 @@ function submitForm() {
     let id = $('#id-input').val();
     let title = $('#title-input').val();
     let salary = $('#salary-input').val();
-    detectSalary = $('#salary-input').val();
     //check if any fields are empty.
         //send alert if field is empty.
 
@@ -23,7 +21,8 @@ function submitForm() {
         alert('Fill empty fields!');
     } else {
         //Create new object with form data, and push it to employees array.
-        employees.push({firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)});
+        let employeeData = {firstName:firstName, lastName:lastName, id:Number(id), title:title, salary:Number(salary)};
+        employees.push(employeeData);
         //Empty the input values.
         clearForm();
         //Add employee object to the DOM
@@ -71,7 +70,9 @@ function handleTotalMonthly() {
     //Remove object from array that corresponds to the table row being deleted.
 //Get the salary value in deleted object, and subtract that value from total monthly.
 function deleteEmployee() {
-    console.log(detectSalary);
-    employees
+    let index = $(this).index();
+    
+
+    employees.splice(index, 1);
     $(this).remove();
 }
