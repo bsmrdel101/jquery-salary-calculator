@@ -1,10 +1,18 @@
 body {
     text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 header {
     background-color: gray;
     color: white;
+    padding: 5px;
+    border: solid 3px #585656;
+}
+
+#page-divide {
+    margin: 40px 0 40px 0;
+    border: solid 1px #58565633;
 }
 
 /* Table Styles */
@@ -18,7 +26,8 @@ table, th, td {
 }
 
 th {
-    background-color: rgb(217 212 212);
+    background-color: rgb(155, 152, 152);
+    color: white;
     padding: 15px;
 }
 
@@ -27,9 +36,29 @@ td {
     text-align: left;
   }
 
-  tr:nth-child(even) {
+tr:nth-child(odd) {
     background-color: rgb(235 233 233);
-  }
+}
 
   /* Form stlyes */
-  
+input[type=text], input[type=number] {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+}
+
+/* Submit Button */
+#form-submit {
+    margin-top: 1rem;
+    background-color: #d5efae;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: #627544;
+    color: #585656;
+}
+
+.icon-styles {
+    height: 15px;
+    width: 15px;
+}
