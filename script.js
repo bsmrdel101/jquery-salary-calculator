@@ -58,6 +58,9 @@ function handleTotalMonthly() {
     }
     totalMonthly /= 12;
     totalMonthly = Number(totalMonthly.toFixed(2));
+    if (totalMonthly <= 0) {
+        totalMonthly = 0;
+    }
     $('#total-monthly').text(totalMonthly);
     if (totalMonthly >= 20000) {
         // $('#total-monthly').parent().addClass('red-text');
